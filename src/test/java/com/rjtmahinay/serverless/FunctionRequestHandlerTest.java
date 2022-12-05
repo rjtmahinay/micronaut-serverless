@@ -5,6 +5,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FunctionRequestHandlerTest {
@@ -28,8 +30,9 @@ public class FunctionRequestHandlerTest {
         APIGatewayProxyRequestEvent request = new APIGatewayProxyRequestEvent();
         request.setHttpMethod("GET");
         request.setPath("/");
+        request.setQueryStringParameters(Collections.singletonMap("name", "Tristan"));
         APIGatewayProxyResponseEvent response = handler.execute(request);
         assertEquals(200, response.getStatusCode().intValue());
-        assertEquals("{\"message\":\"Hello World\"}", response.getBody());
+        assertEquals("{\"message\":\"Hi Tristan\"}", response.getBody());
     }
 }

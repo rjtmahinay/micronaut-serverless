@@ -11,14 +11,14 @@ repositories {
 }
 
 dependencies {
+    annotationProcessor("org.projectlombok:lombok")
+    compileOnly("org.projectlombok:lombok")
     implementation("com.amazonaws:aws-lambda-java-events:3.11.0")
     implementation("io.micronaut:micronaut-jackson-databind")
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
-
     implementation("io.micronaut.aws:micronaut-function-aws")
-
     testImplementation("io.micronaut:micronaut-http-client")
 
 }
